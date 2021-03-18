@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     {
         float h = Input.GetAxis("Horizontal");
 
-        Vector3 movement = new Vector3(speed.x * h, 0, 0);
+        Vector3 movement = new Vector3(speed.x * h * 3, 0, 0);
         movement *= Time.deltaTime;
         thisAnim.SetFloat("Speed", Mathf.Abs(h));
 
