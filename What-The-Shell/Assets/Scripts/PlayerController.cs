@@ -9,14 +9,31 @@ public class PlayerController : MonoBehaviour
     public LayerMask whatIsGround;
     public Vector3 speed = new Vector3(1, 1, 1);
     // Start is called before the first frame update
+   
+
     void Start()
     {
         thisAnim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
       
-    }     
-    
+    }
+
     // Update is called once per frame
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.name == "Martin")
+        {
+            thisAnim.SetTrigger("Hit");
+            thisAnim.SetBool("Naked",true);
+
+        }
+        if (other.gameObject.name == "PickUpShell" && thisAnim.GetBool("Naked"))
+        {
+            thisAnim.SetTrigger("Heal");
+            Destroy(other.gameObject);
+
+        }
+    }
     void Update()
     {
         float h = Input.GetAxis("Horizontal");
@@ -40,6 +57,8 @@ public class PlayerController : MonoBehaviour
         {
             thisAnim.SetTrigger("Walk");
         }
+      
+
 
     }
 }
