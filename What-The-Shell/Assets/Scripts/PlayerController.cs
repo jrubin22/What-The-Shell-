@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -8,14 +9,17 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rigid;
     public LayerMask whatIsGround;
     public Vector3 speed = new Vector3(1, 1, 1);
+    int health = 2;
+    public Scene scene;
+
     // Start is called before the first frame update
-   
+
 
     void Start()
     {
         thisAnim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
-      
+        scene = SceneManager.GetActiveScene();
     }
 
     // Update is called once per frame
@@ -23,16 +27,26 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.name == "Martin")
         {
-            thisAnim.SetTrigger("Hit");
-            thisAnim.SetBool("Naked",true);
-
+            health += -1;
+            if (health == 1)
+            {
+                thisAnim.SetTrigger("Hit");
+                thisAnim.SetBool("Naked", true);
+            }
+            if (health == 0)
+            {
+                this.gameObject.SetActive(false);
+                SceneManager.LoadScene(scene.name);
+            }
         }
-        if (other.gameObject.name == "PickUpShell" && thisAnim.GetBool("Naked"))
+        else if (other.gameObject.name == "PickUpShell" && (health <2))
         {
+            health++;
             thisAnim.SetTrigger("Heal");
             Destroy(other.gameObject);
 
         }
+       
     }
     void Update()
     {
