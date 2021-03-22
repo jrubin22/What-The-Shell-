@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 21775103}
   - component: {fileID: 21775102}
   - component: {fileID: 21775104}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -833,6 +833,7 @@ GameObject:
   - component: {fileID: 958592948}
   - component: {fileID: 958592947}
   - component: {fileID: 958592951}
+  - component: {fileID: 958592952}
   m_Layer: 0
   m_Name: Martin
   m_TagString: Untagged
@@ -971,6 +972,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &958592952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958592946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e6e0983e0c12784b9a46e68be600498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  jumpForce: 10
 --- !u!1 &978571771
 GameObject:
   m_ObjectHideFlags: 0
