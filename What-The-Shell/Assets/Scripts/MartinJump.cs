@@ -31,7 +31,7 @@ public class MartinJump : MonoBehaviour
 
     private bool IsGrounded()
     {
-        RaycastHit2D raycastHit2D = Physics2D.BoxCast(collide.bounds.center, collide.bounds.size, 0f, Vector3.down, 0.1f, groundLayerMask );
+        RaycastHit2D raycastHit2D = Physics2D.BoxCast(collide.bounds.center, collide.bounds.size, 0f, Vector3.down, 0.01f, groundLayerMask );
         Debug.Log(raycastHit2D.collider); 
         return (raycastHit2D.collider != null);
 

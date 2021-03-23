@@ -767,10 +767,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   speed: {x: 1, y: 1, z: 1}
   scene:
     m_Handle: 0
+  levelLoad: {fileID: 0}
 --- !u!95 &188817737
 Animator:
   serializedVersion: 3

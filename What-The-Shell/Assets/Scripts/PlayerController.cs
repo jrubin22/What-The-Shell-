@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
-using LevelManager;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 speed = new Vector3(1, 1, 1);
     int health = 2;
     public Scene scene;
-    [SerializeField] private Script LevelManage;
+    public LevelLoader levelLoad;
 
     // Start is called before the first frame update
 
@@ -22,7 +21,7 @@ public class PlayerController : MonoBehaviour
         thisAnim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         scene = SceneManager.GetActiveScene();
-        LevelManager.LevelLoader instance = new LevelManager.LevelLoader();
+        levelLoad = FindObjectOfType(typeof(LevelLoader)) as LevelLoader;
     }
 
     // Update is called once per frame
@@ -30,7 +29,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.name == "Exit")
         {
-            LevelLoader.LoadNextLevel();
+            this.gameObject.SetActive(false);
+            levelLoad.LoadNextLevel();
         }
         if (other.gameObject.name == "Martin")
         {

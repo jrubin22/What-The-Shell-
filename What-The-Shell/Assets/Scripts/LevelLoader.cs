@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace LevelManager
-{
     public class LevelLoader : MonoBehaviour
     {
         public Animator transition;
@@ -35,4 +33,3 @@ namespace LevelManager
         }
 
     }
-}
