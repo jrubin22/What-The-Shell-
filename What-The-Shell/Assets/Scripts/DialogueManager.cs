@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TextManager : MonoBehaviour
+public class DialogueManager : MonoBehaviour
 {
-    public Text textText;
+
+    public Text dialogueText;
 
     private Queue<string> sentences;
 
@@ -15,13 +16,13 @@ public class TextManager : MonoBehaviour
         sentences = new Queue<string>();
     }
 
-    public void StartText (Text text)
+    public void StartDialogue(Dialogue dialogue)
     {
-        Debug.Log("Showing Message");
+        //Debug.Log("Starting Message");
 
         sentences.Clear();
 
-        foreach (string sentence in text.sentences)
+        foreach(string sentence in dialogue.sentences)
         {
             sentences.Enqueue(sentence);
         }
@@ -29,21 +30,22 @@ public class TextManager : MonoBehaviour
         DisplayNextSentence();
     }
 
-    public void DisplayNextSentence ()
+    public void DisplayNextSentence()
     {
-        if (sentences.Count == 0)
+        if(sentences.Count == 0)
         {
-            EndText();
+            EndDialogue();
             return;
         }
 
         string sentence = sentences.Dequeue();
-        textText.text = sentence;
+        dialogueText.text = sentence;
+
     }
 
-    void EndText()
+    void EndDialogue()
     {
-        Debug.Log ("End of Message")
+        Debug.Log("End of Message");
     }
 
 }
