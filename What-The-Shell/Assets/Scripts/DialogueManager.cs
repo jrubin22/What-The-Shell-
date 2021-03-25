@@ -45,6 +45,8 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
+        GameObject.FindWithTag("NewText").SetActive(false);
+
         Debug.Log("End of Message");
     }
 

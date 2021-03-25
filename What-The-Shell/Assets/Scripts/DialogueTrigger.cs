@@ -10,7 +10,7 @@ public class DialogueTrigger : MonoBehaviour
     public void TriggerDialogue()
     {
 
-        Debug.Log(GameObject.FindWithTag("NewText").activeSelf);
+        //GameObject.FindWithTag("NewText").SetActive(true);
 
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
     }
